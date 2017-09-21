@@ -13,6 +13,9 @@ var entry = module.exports = function(fis, opts) {
     parseJs(info, opts);
   });
   fis.on('compile:postprocessor', function(file) {
+    if(file.isMod){
+      file.wrap = true;
+    }
     wrapJs(file, opts);
   });
   fis.on('components:info', function(componentsInfo) {
